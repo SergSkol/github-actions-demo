@@ -28,7 +28,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "mocha ./tests --recursive",
-    "e2e:test": "mocha ./e2e",
+    "e2e:test": "playwright test --project=chromium --headed",
     "lint": "eslint ."
   }
 }
