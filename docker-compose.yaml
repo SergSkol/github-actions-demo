@@ -1,0 +1,17 @@
+version: '3'
+
+networks:
+  my-network1:
+    external: true
+  my-network2:
+    external: true
+    
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+  db:
+    image: postgres
+    ports:
+      - "8001:5432"
