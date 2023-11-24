@@ -5,6 +5,15 @@
   "repository": "git@github.com:cplee/github-actions-demo.git",
   "author": "Casey Lee <cplee@nektos.com>",
   "license": "MIT",
+  "resolutions": {
+    "minimist": "^1.2.3"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha ./tests --recursive",
+    "e2e:test": "playwright test --project=chromium",
+    "lint": "eslint ."
+  },
   "dependencies": {
     "act": "^0.0.6",
     "express": "^4.16.4",
@@ -20,15 +29,7 @@
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jasmine": "^4.1.1",
-    "mocha": "^5.2.0"
-  },
-  "resolutions": {
-    "minimist": "^1.2.3"
-  },
-  "scripts": {
-    "start": "node index.js",
-    "test": "mocha ./tests --recursive",
-    "e2e:test": "playwright test --project=chromium",
-    "lint": "eslint ."
+    "mocha": "^5.2.0",
+    "playwright-html": "^1.1.0"
   }
 }
