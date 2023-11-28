@@ -16,3 +16,17 @@ test('get started link', async ({ page }) => {
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
+
+test('should find word in the browser', async ({ page }) => {
+  const toFind = "cheese"
+  await page.goto('https://www.startpage.com/');
+  await page.fill('input[id=q]', toFind);
+  page.press('input[id=q]', 'Enter');
+  await page.waitForLoadState();
+
+  const firstResult = await page.waitForSelector('div.sidebar-results p');
+  const content = await firstResult.textContent();
+  console.log(`${toFind}: ${content}`);
+
+  await expect(content).toContain('Cheese');
+})
