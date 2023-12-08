@@ -13,7 +13,7 @@ test.beforeEach(async ({ page }) => {
   await page.route('http://localhost:8080/submit**', (route) => {
     // Return a mocked response
     route.fulfill({
-      body: 'Username: test Email: test@test.com'
+      body: '<h1>Submitted data</h1><p id="username" name="username">Username: test</p><br><p id="email" name="email">Email: test@test.com</p>'
     });
   });
 });
