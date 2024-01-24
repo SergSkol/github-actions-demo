@@ -13,7 +13,7 @@ test.beforeEach(async ({ page }) => {
   await page.route('http://localhost:8080/submit**', (route) => {
     // Return a mocked response
     route.fulfill({
-      body: '<h1>Submitted data</h1><p id="username" name="username">Username: test</p><br><p id="email" name="email">Email: test@test.com</p>'
+      body: '<h1>Submitted data</h1><p id="username" name="username">Username: test</p><br><p id="email" name="email">Email: test@test.com</p>',
     });
   });
 });
@@ -23,12 +23,13 @@ test('show username after mocked form submission', async ({ page }) => {
 
   // Trigger the form submission
   await page.evaluate(() => {
+    // eslint-disable-next-line no-undef
     document.querySelector('form').submit();
   });
 
   // Wait for navigation or any relevant state change after submission
   await page.waitForLoadState('networkidle');
-  
+
   await expect(page.getByText('Username')).toContainText('Username: test');
   await expect(page.getByText('Email')).toContainText('Email: test@test.com');
 });
